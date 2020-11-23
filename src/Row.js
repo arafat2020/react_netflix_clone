@@ -17,7 +17,7 @@ const Row = ({ title,fetchReq,larger_row }) => {
     },[fetchReq]);
     const opts = {
         height: '390',
-      width: '100%',
+      width: '95%',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
@@ -27,7 +27,8 @@ const Row = ({ title,fetchReq,larger_row }) => {
         if(trailerURL){
             setTrailerURL("");
         }else{
-            movieTrailer(`${movie?.name || ""}`).then((url)=>{
+            console.log(movie)
+            movieTrailer(`${movie?.name || movie.original_title}`).then((url)=>{
                 const urlPrms = new URLSearchParams(new URL(url).search);
                 setTrailerURL(urlPrms.get("v"))
                 console.log(url)
